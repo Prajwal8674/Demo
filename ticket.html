@@ -13,22 +13,23 @@
 <style>
 
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #eaaeae;
+html, body {
+    height: 100%; /* Ensure the full height of the viewport is utilized */
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    background-color: #eaaeae;
+    font-family: Arial, sans-serif;
 }
 
 .ticket {
     background: white;
-    width: 320px;
+    width: 90%; /* Make it responsive by using a percentage */
+    max-width: 300px; /* Limit maximum width for larger devices */
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 50px 20px 20px; /* Add top padding equal to the header’s height */
+    padding: 50px 20px 20px;
     text-align: center;
     position: relative;
 }
@@ -55,7 +56,7 @@ body {
 .rotate-symbol {
     position: absolute; /* Position relative to the parent container */
     top: -23px; /* Adjust vertical alignment */
-    font-size: 35px;
+    font-size: 50px;
     color: #ccc;
 
 }
@@ -180,7 +181,7 @@ body {
 
 /* footer */
 .popup-image {
-    width: 300px; /* Initial size of the image */
+    width: 200px; /* Initial size of the image */
     height: auto;
     position: relative;
     animation: popup-effect 2s ease-in-out infinite; /* Loop the popup animation */
