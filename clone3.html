@@ -44,6 +44,11 @@ html, body {
     margin-bottom: -15px;
 }
 
+.numberFont{
+
+      font-family: Arial, Helvetica, sans-serif;
+}
+
 .line-break-bottom{
 
     border-top: 2px dashed #ccc; /* Dashed line */
@@ -265,7 +270,7 @@ color: #0e0e0e;
     <div class="ticket-info">
         <div class="info-block">
             <p class="info-title">Route</p>
-            <p class="info-value" id="displayRoute"></p>
+            <p class="info-value numberFont" id="displayRoute"></p>
         </div>
         <div class="info-block">
             <p class="info-title">Tickets count</p>
@@ -303,7 +308,7 @@ color: #0e0e0e;
     <div class="ticket-time">
         <div>
             <p class="time-block-booking">Booking Time</p>
-            <p class="timing" id="displayBookingTime"></p>
+            <p class="timing numberFont" id="displayBookingTime"></p>
         </div>
         <div class="">
             <p class="time-block-validity">Validity Time</p>
@@ -365,7 +370,7 @@ color: #0e0e0e;
     
         // Format the booking time and calculate validity time
         const bookingTimeFormatted = formatDateTime(bookingTime);
-        const validityTimeFormatted = formatDateTime(new Date(bookingTime.getTime() + 2 * 60 * 60 * 1000)); // 2 hours from now
+        const validityTimeFormatted = formatDateTime(new Date(bookingTime.getTime() +   30 * 60 * 1000)); // 2 hours from now
     
         // Generate the ticket ID using the booking time
         const ticketId = generateTicketId(bookingTime);
