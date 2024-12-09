@@ -166,8 +166,9 @@ html, body {
     margin: 15px 0;
 }
 
-.time-block p {
-    margin: 0;
+.time-block {
+    text-align: left; /* Align text to the left */
+    margin-left: 0; /* Remove unnecessary left margin */
 }
 
 .ticket-id {
@@ -175,7 +176,9 @@ html, body {
     color: gray;
     margin: 15px 0;
 }
-
+.ticket-info .info-block:nth-child(2) {
+    margin-left: 20%; /* Move the Ticket count section 10% to the right */
+}
 .ticket-status {
     font-size: 24px;
     color: red;
@@ -187,7 +190,9 @@ html, body {
 .ticket-logo {
     margin-top: 20px;
 }
-
+.timing{
+    color: black; 
+}
 .circle {
     border: 2px dashed gray;
     border-radius: 50%;
@@ -274,13 +279,14 @@ html, body {
         <div class="ticket-time">
             <div class="time-block">
                 <p>Booking Time</p>
-                <p>07 Dec, 24 | 02:22 PM</p>
+                <p class="timing">07 Dec, 24 | 02:22 PM</p>
             </div>
             <div class="time-block">
                 <p>Validity Time</p>
-                <p>07 Dec, 24 | 02:52 PM</p>
+                <p class="timing">07 Dec, 24 | 02:52 PM</p>
             </div>
         </div>
+        
         <div class="ticket-id">
             <p>2412071422X7V5A7</p>
         </div>
