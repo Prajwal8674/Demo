@@ -19,12 +19,12 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #eaaeae;
+    background-color: #A6BBB2;
     font-family: Arial, sans-serif;
 }
 
 .ticket {
-    background: white;
+    background: #ffffff;
     width: 90%; /* Make it responsive by using a percentage */
     max-width: 300px; /* Limit maximum width for larger devices */
     border-radius: 20px;
@@ -72,7 +72,7 @@ html, body {
 }
 
 .ticket-header {
-    background-color: #f70808;
+    background-color: #ee282f;
     color: white;
     padding: 10px 0; /* Retain some padding for text spacing */
     font-size: 16px;
@@ -215,7 +215,7 @@ html, body {
 
 /* footer */
 .popup-image {
-    width: 200px; /* Initial size of the image */
+    width: 180px; /* Initial size of the image */
     height: auto;
     position: relative;
     animation: popup-effect 2s ease-in-out infinite; /* Loop the popup animation */
@@ -223,11 +223,11 @@ html, body {
 
 @keyframes popup-effect {
     0%, 100% {
-        transform: scale(1); /* Normal size */
+        transform: scale(0.5); /* Normal size */
         opacity: 1; /* Fully visible */
     }
     50% {
-        transform: scale(1.2); /* Slightly larger */
+        transform: scale(1); /* Slightly larger */
         opacity: 1; /* Fully visible */
     }
 }
@@ -289,7 +289,7 @@ html, body {
         <div class="ticket-footer">
             <img src="photos/pmpml.png" alt="Ticket Stamp" class="popup-image">
         </div>
-        
+    
     </div>
 </body>
 </html>
