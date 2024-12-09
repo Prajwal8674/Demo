@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Clone</title>
+    <title>Ticket Clone3</title>
     <link rel="stylesheet" href="styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -114,7 +114,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    margin: 5px 20px; /* Reduce top and bottom margin */
+    margin: 5px 3px; /* Reduce top and bottom margin */
 }
 
 .ticket-route {
@@ -122,41 +122,35 @@ html, body {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-    margin: 5px 20px; /* Reduce margin */
+    margin: 5px 10px; /* Reduce margin */
 }
 
 .route-point {
-    width: 40%; /* Ensure equal spacing for route points */
-    text-align: center;
+    width: 35%; /* Ensure equal spacing for route points */
+    text-align: left;
 }
-
 .arrow-container {
     display: flex;
-    flex-direction: row;
-    align-items: center; /* Align arrow and triangle head vertically */
     justify-content: center;
-    width: 20%; /* Allocate width for the center elements */
+    align-items: center;
+    width: 20%; /* Ensure adequate space allocation for the arrow */
+    position: relative;
 }
 
 .arrow {
-    
-    position: absolute; /* Position relative to the parent container */
-    top: 142px; /* Adjust vertical alignment */
-    font-size: 21px;
+    font-size: 20px;
     color: black;
     font-weight: lighter;
-    margin-right: 20px; /* Add space between arrow and triangle */
-    margin-left: 80px; /* Add space between arrow and triangle */
-    transform: scaleX(8); /* Scale the arrow horizontally */
-   
+    transform: scaleX(3); /* Scale horizontally for length */
+    margin: 0; /* Remove unnecessary margins */
 }
 
 .triangle-head {
-    position: absolute; /* Position relative to the parent container */
-    right: 128px; /* Adjust vertical alignment */
-    top: 147px; /* Adjust vertical alignment */
-    font-size: 12px;
+    font-size: 13px; /* Adjust size for better visibility */
     color: black;
+    position: absolute;
+    right: -10px; /* Position it at the right edge of the arrow container */
+    top: 5.5px;
 }
 
 .ticket-time {
@@ -263,56 +257,65 @@ color: #0e0e0e;
     </style>
 </head>
 <body>
-    <div class="ticket">
-        <header class="ticket-header" >
-            पुणे &nbsp;महानगर &nbsp;परिवहन &nbsp;महामंडळ &nbsp;लि.
-        </header>
-        <div class="ticket-info">
-            <div class="info-block">
-                <p class="info-title">Route</p>
-                <p class="info-value">282</p>
-            </div>
-            <div class="info-block">
-                <p class="info-title">Tickets count</p>
-                <p class="info-value">2F</p>
-            </div>
-            <div class="info-block">
-                <p class="info-title">Fare</p>
-                <p class="info-value">₹20</p>
-            </div>
+    
+
+<div id="ticketDisplay" class="ticket">
+    <header class="ticket-header">
+        पुणे &nbsp;महानगर &nbsp;परिवहन &nbsp;महामंडळ &nbsp;लि.
+    </header>
+    <div class="ticket-info">
+        <div class="info-block">
+            <p class="info-title">Route</p>
+            <p class="info-value" id="displayRoute"></p>
         </div>
+        <div class="info-block">
+            <p class="info-title">Tickets count</p>
+            <p class="info-value" id="displayTicketCount"></p>
+        </div>
+        <div class="info-block">
+            <p class="info-title">Fare</p>
+            <p class="info-value" id="displayFare"></p>
+        </div>
+    </div>
 
 
+        
         <div class="ticket-route">
-            <p class="route-point">Vadacha <br>Stop</p>
+            <p class="route-point" id="displayStartingPoint"></p>
             <div class="arrow-container">
-                <span class="arrow">╴</span>
+                <span class="arrow">━</span>
                 <span class="triangle-head">▶</span>
             </div>
-            <p class="route-point">Goodluck <br>Chowk</p>
+            <p class="route-point" id="displayDroppingPoint"></p>
         </div>
+    
 
-        <div class="line-break">
-            <span class="rotate-symbol left-symbol">&#9697;</span>
-            <span class="rotate-symbol right-symbol">&#9697;</span>
-        </div>
-        
+
          
 
-        <div class="ticket-time">
-            <div >
-                <p class="time-block-booking">Booking Time</p>
-                <p class="timing">07 Dec, 24 | 02:22 PM</p>
-            </div>
-            <div class="">
-                <p class="time-block-validity">Validity Time</p>
-                <p class="timing">07 Dec, 24 | 02:52 PM</p>
-            </div>
-        </div>
+
         
-        <div class="ticket-id">
-            <p class = "UniqCode">2412071422X7V5A7</p>
+        
+    <div class="line-break">
+        <span class="rotate-symbol left-symbol">&#9697;</span>
+        <span class="rotate-symbol right-symbol">&#9697;</span>
+    </div>
+
+    <div class="ticket-time">
+        <div>
+            <p class="time-block-booking">Booking Time</p>
+            <p class="timing" id="displayBookingTime"></p>
         </div>
+        <div class="">
+            <p class="time-block-validity">Validity Time</p>
+            <p class="timing" id="displayValidityTime"></p>
+        </div>
+    </div>
+
+    <div class="ticket-id">
+        <p class="UniqCode" id="displayTicketId"></p>
+    </div>
+
       
         <div class="line-break-bottom"></div>        
         <div class="ticket-footer">
@@ -320,6 +323,34 @@ color: #0e0e0e;
         </div>
     
     </div>
+
+
+    
+
+    <script>
+        // Retrieve the stored data from localStorage
+        const route = localStorage.getItem('route');
+        const ticketCount = localStorage.getItem('ticketCount');
+        const fare = localStorage.getItem('fare');
+        const startingPoint = localStorage.getItem('startingPoint');
+        const droppingPoint = localStorage.getItem('droppingPoint');
+        const bookingTime = localStorage.getItem('bookingTime');
+        const validityTime = localStorage.getItem('validityTime');
+    
+        // Display the retrieved data in the HTML elements
+        document.getElementById('displayRoute').textContent = route;
+        document.getElementById('displayTicketCount').textContent = ticketCount;
+        document.getElementById('displayFare').textContent = `₹${fare}`;
+        document.getElementById('displayStartingPoint').textContent = startingPoint;
+        document.getElementById('displayDroppingPoint').textContent = droppingPoint;
+        document.getElementById('displayBookingTime').textContent = bookingTime;
+        document.getElementById('displayValidityTime').textContent = validityTime;
+    
+        // Generate a ticket ID (for example, a random alphanumeric string)
+        const ticketId = `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+        document.getElementById('displayTicketId').textContent = ticketId;
+    </script>
+    
+    
 </body>
 </html>
-
