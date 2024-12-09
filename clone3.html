@@ -138,10 +138,10 @@ html, body {
 }
 
 .arrow {
-    font-size: 20px;
+    font-size: 15px;
     color: black;
     font-weight: lighter;
-    transform: scaleX(3); /* Scale horizontally for length */
+    transform: scaleX(4); /* Scale horizontally for length */
     margin: 0; /* Remove unnecessary margins */
 }
 
@@ -149,8 +149,8 @@ html, body {
     font-size: 13px; /* Adjust size for better visibility */
     color: black;
     position: absolute;
-    right: -10px; /* Position it at the right edge of the arrow container */
-    top: 5.5px;
+    right: -7px; /* Position it at the right edge of the arrow container */
+    top: 3px;
 }
 
 .ticket-time {
@@ -372,7 +372,7 @@ color: #0e0e0e;
     
         // Display the retrieved data in the HTML elements
         document.getElementById('displayRoute').textContent = route;
-        document.getElementById('displayTicketCount').textContent = ticketCount;
+        document.getElementById('displayTicketCount').textContent = `${ticketCount}F`;
         document.getElementById('displayFare').textContent = `₹${fare}`;
         document.getElementById('displayStartingPoint').textContent = startingPoint;
         document.getElementById('displayDroppingPoint').textContent = droppingPoint;
