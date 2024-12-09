@@ -166,11 +166,15 @@ html, body {
     margin: 15px 0;
 }
 
-.time-block {
+.time-block-booking {
     text-align: left; /* Align text to the left */
-    margin-left: 0; /* Remove unnecessary left margin */
+    margin-right: 68px; /* Remove unnecessary left margin */
 }
 
+.time-block-validity {
+    text-align: left; /* Align text to the left */
+    margin-right:50px; /* Remove unnecessary left margin */
+}
 .ticket-id {
     font-size: 14px;
     color: gray;
@@ -277,12 +281,12 @@ html, body {
          
 
         <div class="ticket-time">
-            <div class="time-block">
-                <p>Booking Time</p>
+            <div >
+                <p class="time-block-booking">Booking Time</p>
                 <p class="timing">07 Dec, 24 | 02:22 PM</p>
             </div>
-            <div class="time-block">
-                <p>Validity Time</p>
+            <div class="">
+                <p class="time-block-validity">Validity Time</p>
                 <p class="timing">07 Dec, 24 | 02:52 PM</p>
             </div>
         </div>
