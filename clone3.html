@@ -258,7 +258,6 @@ color: #0e0e0e;
 </head>
 <body>
     
-
 <div id="ticketDisplay" class="ticket">
     <header class="ticket-header">
         पुणे &nbsp;महानगर &nbsp;परिवहन &nbsp;महामंडळ &nbsp;लि.
@@ -323,19 +322,53 @@ color: #0e0e0e;
         </div>
     
     </div>
-
-
-    
-
     <script>
+        // Function to format date and time as "yymmddhourminute"
+        const generateTicketId = (bookingDate) => {
+            const year = bookingDate.getFullYear().toString().slice(-2); // Last two digits of the year
+            const month = (bookingDate.getMonth() + 1).toString().padStart(2, '0'); // Month (01-12)
+            const day = bookingDate.getDate().toString().padStart(2, '0'); // Day (01-31)
+            const hours = bookingDate.getHours().toString().padStart(2, '0'); // Hours (00-23)
+            const minutes = bookingDate.getMinutes().toString().padStart(2, '0'); // Minutes (00-59)
+            
+            // Generate a random alphanumeric string (e.g., "3QBNF8")
+            const randomString = Math.random().toString(36).substr(2, 6).toUpperCase();
+            
+            // Combine everything
+            return `${year}${month}${day}${hours}${minutes}${randomString}`;
+        };
+    
+        // Function to format the date and time as "07 Dec, 24 | 02:22 PM"
+        const formatDateTime = (date) => {
+            const day = date.getDate().toString().padStart(2, '0'); // Day (07)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = monthNames[date.getMonth()]; // Month (Dec)
+            const year = date.getFullYear().toString().slice(-2); // Year (24)
+            let hours = date.getHours();
+            const minutes = date.getMinutes().toString().padStart(2, '0'); // Minutes (02)
+            const period = hours >= 12 ? 'PM' : 'AM'; // AM/PM
+            hours = hours % 12 || 12; // Convert to 12-hour format
+            return `${day} ${month}, ${year} | ${hours}:${minutes} ${period}`;
+        };
+    
         // Retrieve the stored data from localStorage
         const route = localStorage.getItem('route');
         const ticketCount = localStorage.getItem('ticketCount');
         const fare = localStorage.getItem('fare');
         const startingPoint = localStorage.getItem('startingPoint');
         const droppingPoint = localStorage.getItem('droppingPoint');
-        const bookingTime = localStorage.getItem('bookingTime');
-        const validityTime = localStorage.getItem('validityTime');
+    
+        // Booking time from localStorage (if provided, else use the current time)
+        const bookingTime = localStorage.getItem('bookingTime') 
+            ? new Date(localStorage.getItem('bookingTime')) 
+            : new Date();
+    
+        // Format the booking time and calculate validity time
+        const bookingTimeFormatted = formatDateTime(bookingTime);
+        const validityTimeFormatted = formatDateTime(new Date(bookingTime.getTime() + 2 * 60 * 60 * 1000)); // 2 hours from now
+    
+        // Generate the ticket ID using the booking time
+        const ticketId = generateTicketId(bookingTime);
     
         // Display the retrieved data in the HTML elements
         document.getElementById('displayRoute').textContent = route;
@@ -343,13 +376,11 @@ color: #0e0e0e;
         document.getElementById('displayFare').textContent = `₹${fare}`;
         document.getElementById('displayStartingPoint').textContent = startingPoint;
         document.getElementById('displayDroppingPoint').textContent = droppingPoint;
-        document.getElementById('displayBookingTime').textContent = bookingTime;
-        document.getElementById('displayValidityTime').textContent = validityTime;
-    
-        // Generate a ticket ID (for example, a random alphanumeric string)
-        const ticketId = `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+        document.getElementById('displayBookingTime').textContent = bookingTimeFormatted;
+        document.getElementById('displayValidityTime').textContent = validityTimeFormatted;
         document.getElementById('displayTicketId').textContent = ticketId;
     </script>
+    
     
     
 </body>
