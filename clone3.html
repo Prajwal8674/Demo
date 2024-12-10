@@ -22,6 +22,45 @@ html, body {
     background-color: #b2cdc0;
     font-family: Arial, sans-serif;
 }
+.close-button {
+    position: absolute;
+    top: 0px; /* Adjust distance from the top */
+    left: 15px; /* Adjust distance from the right */
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: darkred;
+    transform: scale(1.1);
+}
+
+.all-tickets {
+    position: absolute;
+    top: 7px;
+    left: 285px; /* Position text relative to the close button */
+    font-size: 13px;
+    font-weight:600;
+    text-decoration: underline; /* Adds underline to the text */
+    color: black;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.all-tickets:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: darkred; /* Change color on hover */
+}
+
 .ticket {
     background: #ffffff;
     width: 90%; /* Make it responsive by using a percentage */
@@ -76,21 +115,22 @@ html, body {
     right: -35px; /* Position on the right */
     transform: rotate(90deg); /* Rotate 90 degrees for right symbol */
 }
-
 .ticket-header {
     background-color: #e21d23;
     color: white;
     padding: 10px 0; /* Retain some padding for text spacing */
-    font-size: 16px;
+    font-size: 16px; /* Increase font size */
+    text-transform: uppercase; /* Optional: Make the text uppercase for emphasis */
     border-radius: 13px 13px 0 0;
     margin: 0; /* Remove any external margins */
     position: absolute; /* Make the header stick to the top of the ticket */
     top: 0; /* Align it with the top edge of the container */
     left: 0; /* Align it with the left edge of the container */
     width: 100%; /* Ensure the header spans the full width of the ticket */
-    font-weight : 500;
+    font-weight: 540; /* Make the text bold */
     box-sizing: border-box; /* Ensure padding doesn’t overflow the container */
 }
+
 .ticket-info {
     display: flex;
     justify-content: space-between;
@@ -262,9 +302,33 @@ color: #0e0e0e;
     }
 }
 
+/* Complaint Icon Styles with Circular Background */
+.complaint-icon {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 15px; /* Distance from the bottom */
+    right: 30px; /* Distance from the right */
+    cursor: pointer;
+    padding: 10px; /* Add padding for circular background */
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 50%; /* Makes the background circular */
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+    z-index: 100; /* Ensure it appears above other content */
+}
+.complaint-icon img {
+    width: 95%; /* Reduce size by 5% */
+    height: 95%; /* Maintain aspect ratio */
+    display: block; /* Remove any extra spacing inside the container */
+    margin: auto; /* Center the image within the circular background */
+}
+
     </style>
 </head>
 <body>
+    <div class="close-button" onclick="closeTicket()">╳
+        <span class="all-tickets">All tickets</span>
+
+    </div>
     
 <div id="ticketDisplay" class="ticket">
     <header class="ticket-header">
@@ -330,7 +394,9 @@ color: #0e0e0e;
         </div>
     
     </div>
-    <script>
+    <div class="complaint-icon">
+        <img src="https://img.icons8.com/material-rounded/24/complaint.png" alt="complaint" />
+    </div>    <script>
         // Function to format date and time as "yymmddhourminute"
         const generateTicketId = (bookingDate) => {
             const year = bookingDate.getFullYear().toString().slice(-2); // Last two digits of the year
@@ -388,6 +454,7 @@ color: #0e0e0e;
         document.getElementById('displayValidityTime').textContent = validityTimeFormatted;
         document.getElementById('displayTicketId').textContent = ticketId;
     </script>
+    
     
     
     
