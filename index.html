@@ -177,6 +177,21 @@
             // Redirect to the show page to display the ticket
             window.location.href = "ticket.html";
         });
+
+
+        /* To Prevent refreshing by the user*/
+         // Detect page reload
+    window.addEventListener('beforeunload', (event) => {
+        event.preventDefault(); // Prevent the default behavior
+        event.returnValue = ''; // Show a confirmation dialog (browser-dependent)
+    });
+
+    // Additional safeguard: Clear form values on refresh attempt
+    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+        // Optionally redirect to another page or clear local storage
+        localStorage.clear();
+        window.location.href = 'index.html'; // Redirect to the index page
+    }
     </script>
 
 </body>
