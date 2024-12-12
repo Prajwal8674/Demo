@@ -22,7 +22,6 @@
             background: #ffffff;
             width: 90%;
             max-width: 500px;
-            border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
             text-align: center;
@@ -92,13 +91,28 @@
 
             <div class="form-group">
                 <label for="startingPoint">Starting Point:</label>
-                <input type="text" id="startingPoint" name="startingPoint" required>
+                <select id="startingPoint" name="startingPoint" required>
+                    <option value="" disabled selected>Select Starting point</option>
+                    <option value="Karve Nagar">Karve Nagar</option>
+                    <option value="Vadacha Stop">Vadacha Stop</option>
+                    <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+                </select>
             </div>
+            
 
             <div class="form-group">
                 <label for="droppingPoint">Dropping Point:</label>
-                <input type="text" id="droppingPoint" name="droppingPoint" required>
+                <select id="droppingPoint" name="droppingPoint" required>
+                    <option value="" disabled selected>Select dropping point</option>
+                    <option value="Goodluck Chowk">Goodluck Chowk</option>
+                    <option value="Deccan Corner">Deccan Corner</option>
+                    <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+                    <option value="Vadacha Stop">Vadacha Stop</option>
+                    <option value="Karve Nagar">Karve Nagar</option>
+
+                </select>
             </div>
+            
 
             <div class="form-group">
                 <label for="bookingTime">Booking Time:</label>
