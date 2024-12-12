@@ -169,11 +169,11 @@ body {
 }
 
 .route-point {
-    width: 35%;
+    width: 36%;
     text-align: center;
     font-weight: 500;
     color: #4e5451;
-    font-size: 19px;
+    font-size: 17px;
 }
 .arrow-container {
     display: flex;
@@ -317,11 +317,9 @@ body {
 </style>
 </head>
 <body>
-
-    <div class="close-button" onclick="closeTicket()">╳
+    <div class="close-button" onclick="goToIndexPage()">╳
         <span class="all-tickets">All tickets</span>
-
-    </div>
+    </div>    
     
 <div id="ticketDisplay" class="ticket">
     <header class="ticket-header">
@@ -419,6 +417,9 @@ body {
         };
     
         // Retrieve the stored data from localStorage
+        function goToIndexPage() {
+        window.location.href = "index.html"; // Change "index.html" to your desired page URL
+    }
         const route = localStorage.getItem('route');
         const ticketCount = localStorage.getItem('ticketCount');
         const fare = localStorage.getItem('fare');
