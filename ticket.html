@@ -448,19 +448,17 @@ body {
         document.getElementById('displayValidityTime').textContent = validityTimeFormatted;
         document.getElementById('displayTicketId').textContent = ticketId;
 
-                /* To Prevent refreshing by the user*/
-         // Detect page reload
-    window.addEventListener('beforeunload', (event) => {
-        event.preventDefault(); // Prevent the default behavior
-        event.returnValue = ''; // Show a confirmation dialog (browser-dependent)
-    });
+         // Block Pull-to-Refresh
+         window.addEventListener('touchstart', (e) => {
+            let touchStartY = e.touches[0].clientY;
 
-    // Additional safeguard: Clear form values on refresh attempt
-    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-        // Optionally redirect to another page or clear local storage
-        localStorage.clear();
-        window.location.href = 'index.html'; // Redirect to the index page
-    }
+            window.addEventListener('touchmove', (e) => {
+                let touchMoveY = e.touches[0].clientY;
+                if (touchStartY < touchMoveY) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
     </script>
     
     
