@@ -342,6 +342,18 @@
             font-weight:600;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
+        .logo-section {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.logo-image {
+    width: 30px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 25%;
+}
+
     </style>
 </head><body>
     
@@ -444,6 +456,9 @@
                 <input type="hidden" id="validity-time-input">
     
                 <div class="pay-section">
+                    <div class="logo-section">
+                        <img src="photos/phonepe.png" alt="PhonePe Logo" class="logo-image" />
+                    </div>
                     <select name="paymentMethod" id="payment-method">
                         <option value="Phone">Phone</option>
                         <option value="Cash">Cash</option>
@@ -451,6 +466,7 @@
                     </select>
                     <button type="button" class="total-price" onclick="submitForm()" id="pay-button">Pay ₹5.0</button>
                 </div>
+                
             </div>
         </div>
     
