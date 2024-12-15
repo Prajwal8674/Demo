@@ -561,9 +561,24 @@ console.log("Full Tickets:", fullTicketCount, "Half Tickets:", halfTicketCount);
     
             // Update date and time display
             function updateDateTime() {
-                const currentTime = formatLocalTime(new Date());
-                dateTimeElement.textContent = currentTime;
-            }
+                const now = new Date();
+        
+                // Format date as "15 Dec, 2024"
+                const options = { day: '2-digit', month: 'short', year: 'numeric' };
+                const formattedDate = now.toLocaleDateString('en-US', options);
+        
+                // Format time as "04:14 AM/PM"
+                const hours = now.getHours();
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
+        
+                // Combine date and time
+                const dateTimeString = `${formattedDate} | ${formattedTime}`;
+        
+                // Update the DOM
+                dateTimeElement.textContent = dateTimeString;
+            }
     
             setInterval(updateDateTime, 1000);
             updateDateTime();
