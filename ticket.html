@@ -387,7 +387,7 @@ body {
     </div>
     <div class="complaint-icon">
         <img src="https://img.icons8.com/material-rounded/24/complaint.png" alt="complaint" />
-    </div>    <script>
+    </div>   <script>
         // Function to format date and time as "yymmddhourminute"
         const generateTicketId = (bookingDate) => {
             const year = bookingDate.getFullYear().toString().slice(-2); // Last two digits of the year
@@ -418,13 +418,17 @@ body {
     
         // Retrieve the stored data from localStorage
         function goToIndexPage() {
-        window.location.href = "index.html"; // Change "index.html" to your desired page URL
-    }
+            window.location.href = "index.html"; // Change "index.html" to your desired page URL
+        }
+    
         const route = localStorage.getItem('route');
-        const ticketCount = localStorage.getItem('ticketCount');
+        let ticketCount = localStorage.getItem('fullTicketCount'); // Get the count directly as a number
         const fare = localStorage.getItem('fare');
         const startingPoint = localStorage.getItem('startingPoint');
         const droppingPoint = localStorage.getItem('droppingPoint');
+    
+        // Ensure the ticketCount is a number
+        ticketCount = parseInt(ticketCount, 10); // Remove any non-numeric characters
     
         // Booking time from localStorage (if provided, else use the current time)
         const bookingTime = localStorage.getItem('bookingTime') 
@@ -433,7 +437,7 @@ body {
     
         // Format the booking time and calculate validity time
         const bookingTimeFormatted = formatDateTime(bookingTime);
-        const validityTimeFormatted = formatDateTime(new Date(bookingTime.getTime() +   30 * 60 * 1000)); // 2 hours from now
+        const validityTimeFormatted = formatDateTime(new Date(bookingTime.getTime() + 30 * 60 * 1000)); // 30 minutes from now
     
         // Generate the ticket ID using the booking time
         const ticketId = generateTicketId(bookingTime);
@@ -447,11 +451,11 @@ body {
         document.getElementById('displayBookingTime').textContent = bookingTimeFormatted;
         document.getElementById('displayValidityTime').textContent = validityTimeFormatted;
         document.getElementById('displayTicketId').textContent = ticketId;
-
-         // Block Pull-to-Refresh
-            window.addEventListener('touchstart', (e) => {
+    
+        // Block Pull-to-Refresh
+        window.addEventListener('touchstart', (e) => {
             let touchStartY = e.touches[0].clientY;
-
+    
             window.addEventListener('touchmove', (e) => {
                 let touchMoveY = e.touches[0].clientY;
                 if (touchStartY < touchMoveY) {
@@ -460,9 +464,5 @@ body {
             }, { passive: false });
         });
     </script>
-    
-    
-    
-    
 </body>
 </html>
