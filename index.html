@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ticket Clone3</title>
+    <title>Form Page</title>
     <link rel="stylesheet" href="styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,24 +15,27 @@
     <style>
         /* General Styles */
         body {
-            font-family: 'Roboto Slab', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw; /* Ensures full width of the viewport */
+}
 
-        .container {
-            width: 90%;
-            max-width: 400px;
-            background: #efe8e8;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            border-radius: 20px;
-        }
+.container {
+    width: 90%; /* Adjust container width */
+    max-width: 400px; /* Limits maximum width */
+    background: #efe8e8;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border-radius: 20px;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
 
         .container::before, .container::after {
             content: '';
@@ -83,7 +86,7 @@
         }
 
         .content {
-            padding: 15px;
+            padding: 10px;
             position: relative;
         }
 
@@ -134,16 +137,14 @@
             gap: 15px; /* Adjusted the gap for better spacing */
         }
 
-       .stops label {
+        .stops label {
     display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    gap: 5px; /* Add some gap between the radio button, label, and input */
-    font-size: 16px;
+    align-items: center; /* Center the label with the custom radio */
+    gap: 10px; /* Adjusted the gap */
+    font-size: 15px;
     color: #333;
-
-
-
 }
+
 
 
         .custom-radio {
@@ -172,16 +173,15 @@
         }
 
         .stop-name {
-    font-size: 14px;
-    color: #616161;
+    font-size: 19px;
+    color: #0f0d0d;
     border: none;
     background: transparent;
     outline: none;
     width: auto; /* Ensure it adjusts according to the input length */
     display: inline; /* Keeps the input inline with the label */
-    margin-left: 10px; /* Adjusts the spacing if needed */
+    margin-left: 20px; /* Adjusts the spacing if needed */
 
-   
 }
 
         
@@ -338,8 +338,9 @@
         }
         #current-date-time {
             margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight:600;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
     </style>
 </head><body>
@@ -364,20 +365,42 @@
                 <div class="horizontal-line"></div>
                 
                 <div class="stops">
-                    <label>
-                        <span class="custom-radio"></span>
-                        Starting Point
-                        <input type="text" name="startingPoint" id="starting-point" class="stop-name" value="Kumbharwada" />
+                    <label style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <span>
+                            <span class="custom-radio"></span>
+                            Starting Point
+                        </span>
+                        <select name="startingPoint" id="starting-point" class="stop-name" style="margin-top: 0px; ">
+                            <option value="Choose Option" selected>Starting stop</option>
+                            <!-- Add more options here as needed -->
+                            <option value="Karve Nagar">Karve Nagar</option>
+                            <option value="Vadacha Stop">Vadacha Stop</option>
+                            <option value="Vandevi karve Road">Vandevi karve Road</option>
+                            <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+                            <option value="Deccan Corner">Deccan Corner</option>
+                            <!-- Add other options -->
+                        </select>
                     </label>
-    
-                    <label>
-                        <input type="radio" name="stop" />
-                        <span class="custom-radio"></span>
-                        Dropping Point
-                        <br>
-                        <input type="text" name="droppingPoint" id="dropping-point" class="stop-name" value="Kumbharwada" />
+                
+                    <label style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 15px;">
+                        <span>
+                            <span class="custom-radio"></span>
+                            Ending Stop
+                        </span>
+                        <select name="droppingPoint" id="dropping-point" class="stop-name" style="margin-top: 0px;">
+                            <option value="Choose Option" selected>Ending stop</option>
+                            <!-- Add more options here as needed -->
+                            <option value="Karve Nagar">Karve Nagar</option>
+                            <option value="Vadacha Stop">Vadacha Stop</option>
+                            <option value="Deccan Corner">Deccan Corner</option>
+                            <option value="Goodluck Chowk">Goodluck Chowk</option>
+                            <option value="Deccan Gymkhana">Deccan Gymkhana</option>
+
+                            <!-- Add other options -->
+                        </select>
                     </label>
                 </div>
+                
     
                 <div class="fare-options">
                     <button>By Fare</button>
@@ -507,7 +530,6 @@ console.log("Full Tickets:", fullTicketCount, "Half Tickets:", halfTicketCount);
             // Format the time in a readable format
             function formatLocalTime(date) {
                 return date.toLocaleString('en-IN', {
-                    weekday: 'long',
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',
