@@ -374,43 +374,32 @@
                 </div>
     
                 <div class="horizontal-line"></div>
-                
                 <div class="stops">
                     <label style="display: flex; flex-direction: column; align-items: flex-start;">
-                        <span>
-                            <span class="custom-radio"></span>
-                            Starting Point
-                        </span>
-                        <select name="startingPoint" id="starting-point" class="stop-name" style="margin-top: 0px; ">
-                            <option value="Vadacha Stop" selected>Vadacha Stop</option>
-                            <!-- Add more options here as needed -->
-                            <option value="Karve Nagar">Karve Nagar</option>
-                            <option value="Vadacha Stop">Vadacha Stop</option>
-                            <option value="Vandevi karve Road">Vandevi karve Road</option>
-                            <option value="Deccan Gymkhana">Deccan Gymkhana</option>
-                            <option value="Deccan Corner">Deccan Corner</option>
-                            <!-- Add other options -->
-                        </select>
+                        <span>Starting Point</span>
+                        <input list="starting-points" id="starting-point" class="stop-name" placeholder="Select or type a stop" />
+                        <datalist id="starting-points">
+                            <option value="Deccan Gymkhana"></option>
+                            <option value="Karve Nagar"></option>
+                            <option value="Vadacha Stop"></option>
+                            <option value="Vandevi karve Road"></option>
+                            <option value="Deccan Corner"></option>
+                        </datalist>
                     </label>
-                
+    
                     <label style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 15px;">
-                        <span>
-                            <span class="custom-radio"></span>
-                            Ending Stop
-                        </span>
-                        <select name="droppingPoint" id="dropping-point" class="stop-name" style="margin-top: 0px;">
-                            <option value="Goodluck Chowk" selected>Goodluck Chowk</option>
-                            <!-- Add more options here as needed -->
-                            <option value="Karve Nagar">Karve Nagar</option>
-                            <option value="Vadacha Stop">Vadacha Stop</option>
-                            <option value="Deccan Corner">Deccan Corner</option>
-                            <option value="Goodluck Chowk">Goodluck Chowk</option>
-                            <option value="Deccan Gymkhana">Deccan Gymkhana</option>
-
-                            <!-- Add other options -->
-                        </select>
+                        <span>Ending Stop</span>
+                        <input list="ending-stops" id="dropping-point" class="stop-name" placeholder="Select or type a stop" />
+                        <datalist id="ending-stops">
+                            <option value="Vadacha Stop"></option>
+                            <option value="Karve Nagar"></option>
+                            <option value="Deccan Corner"></option>
+                            <option value="Goodluck Chowk"></option>
+                            <option value="Deccan Gymkhana"></option>
+                        </datalist>
                     </label>
-                </div>
+                </div>
+    
                 
     
                 <div class="fare-options">
